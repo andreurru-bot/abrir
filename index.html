@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Un pequeño detalle ❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- Contenedor de corazones de fondo -->
+  <div id="ambientHearts" class="ambient-hearts" aria-hidden="true"></div>
+
+  <!-- El Sobre -->
+  <div class="envelope-wrapper">
+    <!-- Parte trasera del sobre -->
+    <div class="envelope-back"></div>
+
+    <!-- Escenario donde salen las tarjetas (cartas) -->
+    <main id="stage" class="stage">
+      <!-- Tarjeta de Bienvenida -->
+      <section class="card-paper card-visible" data-step="0">
+        <p class="eyebrow">para vos</p>
+        <h1 class="welcome-title">Tengo un pequeño detalle<br>para vos <span class="heart-inline">❤️</span></h1>
+        <button class="btn-main" id="openBtn">Abrir el sobre</button>
+      </section>
+    </main>
+
+    <!-- Parte frontal del sobre con el sello de corazón -->
+    <div class="envelope-front"></div>
+    <div class="heart-seal">❤️</div>
+  </div>
+
+  <!-- Plantilla de las tarjetas de mensaje -->
+  <template id="cardTemplate">
+    <section class="card-paper">
+      <p class="eyebrow"></p>
+      <div class="card-lines"></div>
+      <!-- Aquí se insertará el meme si existe en el JS -->
+      <div class="card-image-wrapper"></div>
+      <button class="btn-main btn-continue">Continuar</button>
+    </section>
+  </template>
+
+  <!-- Plantilla de la tarjeta final de cierre -->
+  <template id="finalTemplate">
+    <section class="card-paper final-card">
+      <p class="eyebrow">fin</p>
+      <div class="card-lines">
+        <p>Gracias por leer hasta el final 💌</p>
+      </div>
+      <button class="btn-main btn-restart">Ver de nuevo</button>
+    </section>
+  </template>
+
+  <script src="indes.js"></script>
+</body>
+</html>
