@@ -1,0 +1,198 @@
+:root {
+  --bg-color: #f7f9fa; /* Fondo casi blanco */
+  --envelope-back: #e6ded3;
+  --envelope-front: #fdfbf7;
+  --envelope-shadow: rgba(0, 0, 0, 0.1);
+  --paper: #ffffff;
+  --text-dark: #2c2c2c;
+  --rose: #ff4d6d;
+  --gold: #d4af37;
+  --ease-soft: cubic-bezier(.22,.68,.32,1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-color: var(--bg-color);
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.envelope-wrapper {
+  position: relative;
+  width: 340px;
+  height: 230px;
+  /* Le damos más espacio arriba para que la carta salga sin tocar el techo */
+  margin-top: 250px; 
+  z-index: 10;
+  isolation: isolate; 
+}
+
+.envelope-back {
+  position: absolute; inset: 0;
+  background-color: var(--envelope-back);
+  border-radius: 8px 8px 12px 12px;
+  box-shadow: 0 15px 35px var(--envelope-shadow);
+  z-index: 1; /* Capa 1: Fondo del sobre */
+}
+
+.envelope-front {
+  position: absolute; inset: 0;
+  border-left: 170px solid #f4f1ea;
+  border-right: 170px solid #f4f1ea;
+  border-bottom: 115px solid #ede9e0;
+  border-top: 115px solid transparent;
+  z-index: 3; /* Capa 3: El frente del sobre cubre la carta */
+  pointer-events: none;
+  border-radius: 0 0 12px 12px;
+}
+
+.heart-seal {
+  position: absolute;
+  top: 55%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 35px;
+  z-index: 4; /* Capa 4: El corazón va hasta arriba */
+  pointer-events: none;
+  filter: drop-shadow(0 4px 6px rgba(255, 77, 109, 0.3));
+}
+
+/* --- LAS CARTAS (Hojas de papel) --- */
+.stage {
+  position: absolute;
+  bottom: 0; left: 5%;
+  width: 90%; height: 350px;
+  z-index: 15; /* Entre la parte trasera y delantera del sobre */
+}
+
+.card-paper {
+  position: absolute;
+  bottom: 10px; left: 0;
+  width: 100%;
+  /* Cambiamos height por min-height y lo hacemos más grande */
+  min-height: 420px; 
+  background: var(--paper);
+  border-radius: 8px;
+  padding: 30px 20px;
+  box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.card-paper.card-visible {
+  display: flex;
+  animation: slideOut 1s var(--ease-soft) forwards;
+}
+
+.card-paper[data-step="0"] {
+  min-height: 0;
+}
+
+.card-paper.card-leaving {
+  animation: fadeAway 0.5s var(--ease-soft) forwards;
+}
+
+@keyframes slideOut {
+  0% { transform: translateY(120%); opacity: 0; }
+  /* Cambiamos -70px por -180px para que suba muchísimo más */
+  100% { transform: translateY(-180px); opacity: 1; }
+}
+
+@keyframes fadeAway {
+  0% { transform: translateY(-180px); opacity: 1; }
+  100% { transform: translateY(-180px) scale(0.95); opacity: 0; }
+}
+
+.eyebrow {
+  font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-dark); opacity: 0.6; margin-bottom: 10px;
+}
+.welcome-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; line-height: 1.2; margin-bottom: 20px;
+}
+.card-lines {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.card-lines p {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: lineIn 0.8s var(--ease-soft) forwards;
+  margin-bottom: 10px;
+}
+.card-lines p.line-pause { font-style: italic; color: #666; }
+.card-lines p.line-strong { font-weight: 600; color: var(--rose); }
+
+@keyframes lineIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card-image-wrapper img {
+  max-width: 100%;
+  max-height: 120px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  opacity: 0;
+  animation: lineIn 0.8s var(--ease-soft) forwards;
+  animation-delay: 1s;
+}
+
+.btn-main {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  background: var(--rose);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: auto;
+  transition: transform 0.2s, background 0.2s;
+}
+.btn-main:hover { transform: scale(1.05); background: #e63956; }
+
+.ambient-hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.ambient-hearts .heart {
+  position: absolute;
+  bottom: -10%;
+  color: var(--rose);
+  opacity: 0;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.35; }
+  90% { opacity: 0.35; }
+  100% { transform: translateY(-110vh) rotate(15deg); opacity: 0; }
+}
+
+.final-card .card-lines {
+  font-size: 1.3rem;
+}
+.btn-restart {
+  background: var(--gold);
+}
+.btn-restart:hover { background: #b8952e; }
