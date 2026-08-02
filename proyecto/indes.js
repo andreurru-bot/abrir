@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const CARDS = [
     {
-      eyebrow: 'Hoy',
+      eyebrow: '',
       lines: [
         'Dicen que hoy es un día especial...',
         'Solo quería aprovechar para hacerte un pequeño detalle.',
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTuPHPd5SR6jgpoGixNpd6Oxla4KcdSDJZtUXOQLiqLg&s=10'
     },
     {
-      eyebrow: 'La cancha',
+      eyebrow: '',
       lines: [
         'Me gusta mucho cuando jugamos voley y terminamos riéndonos mucho.',
         'Son momentos cortos, pero la paso súper bien.'
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrpNvZuNZsHhbj_0O9CPyS69b8bqdHoMO60zJiNhZyFg&s=10' 
     },
     {
-      eyebrow: 'Silencio',
+      eyebrow: '',
       lines: [
         'Sé que a veces no hablo demasiado...',
         'Me cuesta encontrar las palabras correctas.',
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdftK56t4HU71tTJWDrlIvtPsR3z31LPnptXRJoUIjAw&s=10'
     },
     {
-      eyebrow: 'Todavía no...',
+      eyebrow: '',
       lines: [
         'Espero que algún día pueda decirte esto de manera diferente.',
         ['Mientras tanto...', 'pause'],
